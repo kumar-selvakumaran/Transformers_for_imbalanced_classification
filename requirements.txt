@@ -1,0 +1,6 @@
+jupyter==1.0.0
+pandas==2.1.4
+torch==2.1.2+cu118
+seaborn==0.13.0
+numpy==1.26.2
+transformers==4.36.2
