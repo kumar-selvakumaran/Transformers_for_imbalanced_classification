@@ -1,6 +1,8 @@
 <h1 style="text-align: center;">Transformers compete on imbalanced product classification data</h1>
 
-The dataset can can be found in this link. <a href="https://drive.google.com/drive/folders/165k0tlrmcF28n1fz1DVSwXXXAdt5ONZJ?usp=sharing">[link]</a>
+- The dataset can can be found in this link. <a href="https://drive.google.com/drive/folders/165k0tlrmcF28n1fz1DVSwXXXAdt5ONZJ?usp=sharing">[link]</a>
+
+- link to resulting publication. <a href="https://ieeexplore.ieee.org/abstract/document/10183484">[link]</a>
 
 <h3>Steps taken in this project:</h3>
 
@@ -23,3 +25,5 @@ using **rust** based batchwise tokenization and saved as pickle files. <a href="
 
 ______
 
+<h3> References </h3>
+- Surana S, "Amazon Product Browse Node Classification Data", Kaggle Datasets. <a href="https://www.kaggle.com/datasets/subhamjain/amazon-product-browse-node-classification-data">[link]</a> 
