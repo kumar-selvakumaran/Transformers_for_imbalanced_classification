@@ -2,7 +2,7 @@
 
 <h3>Context:</h3>
 
-- The problem is to classify product data into its respective "browse node"
+- The task chosen is to classify product data into its respective "browse node"
 
 - Product data such as "Product name", "Product description", "Brand Name", "Brand Description" is given.
 
