@@ -38,4 +38,4 @@ using **rust** based batchwise tokenization and saved as pickle files. <a href="
 ______
 
 <h3> References </h3>
-- Surana S, "Amazon Product Browse Node Classification Data", Kaggle Datasets. <a href="https://www.kaggle.com/datasets/subhamjain/amazon-product-browse-node-classification-data">[link]</a> 
+[1]&nbsp; Surana S, "Amazon Product Browse Node Classification Data", Kaggle Datasets. <a href="https://www.kaggle.com/datasets/subhamjain/amazon-product-browse-node-classification-data">[link]</a> 
