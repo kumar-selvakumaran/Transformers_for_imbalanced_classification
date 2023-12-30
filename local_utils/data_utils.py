@@ -16,6 +16,9 @@ def set_seed(seed=42):
     np.random.seed(seed)
     torch.manual_seed(seed)
 
+def make_path(pathdir):
+    if not os.path.exists(pathdir):
+        os.mkdir(pathdir)
 
 #VISUALIZING THE FREQUENCY DETAILS OF THE DATA
 def viz_data(full_data):
