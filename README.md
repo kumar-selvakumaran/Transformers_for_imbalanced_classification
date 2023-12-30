@@ -4,9 +4,9 @@
 
 - The problem is to classify product data into its respective "browse node"
 
-- product data such as "Product name", "Product description", "Brand Name", "Brand Description" is given.
+- Product data such as "Product name", "Product description", "Brand Name", "Brand Description" is given.
 
-- Like seen in E-commerce websites, The number of products existing in each category is highly varied, and this imbalance makes categorization by machine-learning challenging, and interesting.
+- As seen in E-commerce websites, The number of products existing in each category is highly varied, and this imbalance makes categorization by machine-learning challenging, and interesting.
 
 - Hence, the performance of the amazing transformer models are explored on this imbalanced data.
 
