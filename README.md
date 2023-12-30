@@ -1,5 +1,17 @@
 <h1 style="text-align: center;">Transformers compete on imbalanced product classification data</h1>
 
+<h3>Context:</h3>
+
+- The problem is to classify product data into its respective "browse node"
+
+- product data such as "Product name", "Product description", "Brand Name", "Brand Description" is given.
+
+- Like seen in E-commerce websites, The number of products existing in each category is highly varied, and this imbalance makes categorization by machine-learning challenging, and interesting.
+
+- Hence, the performance of the amazing transformer models are explored on this imbalanced data.
+
+<h3> details </h3>
+
 - The dataset can can be found in this link. <a href="https://drive.google.com/drive/folders/165k0tlrmcF28n1fz1DVSwXXXAdt5ONZJ?usp=sharing">[link]</a>
 
 - link to resulting publication. <a href="https://ieeexplore.ieee.org/abstract/document/10183484">[link]</a>
