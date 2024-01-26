@@ -19,11 +19,28 @@ from .data_utils import set_seed, make_path
 
 
 def flat_accuracy(preds, labels):
+    """
+    The function calculates the accuracy of the predictions by comparing them to the actual labels.
+    
+    :param preds: The `preds` parameter is a numpy array containing the predicted values. It should have
+    a shape of (batch_size, num_classes), where `batch_size` is the number of samples and `num_classes`
+    is the number of classes or categories
+    :param labels: The "labels" parameter is a numpy array that contains the true labels for a set of
+    examples. Each element in the array represents the true label for a single example
+    :return: the flat accuracy, which is the ratio of correct predictions to the total number of
+    predictions.
+    """
     pred_flat = np.argmax(preds, axis=1).flatten()
     labels_flat = labels.flatten()
     return np.sum(pred_flat == labels_flat) / len(labels_flat)
 
 def format_time(elapsed):
+    """
+    The function takes a time in seconds and returns a formatted string in the format hh:mm:ss.
+    
+    :param elapsed: The parameter "elapsed" represents the time in seconds that you want to format
+    :return: a string in the format "hh:mm:ss" representing the elapsed time.
+    """
     '''
     Takes a time in seconds and returns a string hh:mm:ss
     '''
@@ -34,6 +51,16 @@ def format_time(elapsed):
     return str(datetime.timedelta(seconds=elapsed_rounded))
 
 def convert_labels(og_labels):
+    """
+    The function `convert_labels` takes in a list of original labels, converts them to unique and sorted
+    labels, assigns unique IDs to each label, and returns a new list of labels where each label is
+    replaced with its corresponding ID.
+    
+    :param og_labels: The `og_labels` parameter is a list or array containing the original labels that
+    you want to convert
+    :return: a list of new labels, where each label in the original labels list is replaced with its
+    corresponding ID.
+    """
     labels = np.unique(np.array(og_labels))
     labels.sort()
     ids = range(0,len(labels))
@@ -41,6 +68,14 @@ def convert_labels(og_labels):
     new_labels = [*map(label_to_id_dict.get, og_labels.tolist())]
     return new_labels
 
+    """
+    The function "getlbl2id" takes in a list of original labels, sorts them, assigns unique IDs to each
+    label, and returns a dictionary mapping each label to its corresponding ID.
+    
+    :param og_labels: The parameter "og_labels" is expected to be a list or array containing the
+    original labels. These labels can be of any data type, such as strings or integers
+    :return: a dictionary that maps each unique label in the input `og_labels` to a unique ID.
+    """
 def getlbl2id(og_labels):
     labels = np.unique(np.array(og_labels))
     labels.sort()
@@ -49,13 +84,37 @@ def getlbl2id(og_labels):
     return label_to_id_dict
                            
 
+# The `trainer` class is used to prepare data and train a model for sequence classification using the
+# Deberta architecture.
 
 class trainer:
     def __init__(self):
+        """
+        The function initializes the device to be used for computation, either CUDA if available or CPU
+        otherwise.
+        """
         
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         
 
+    """
+    The `prepare_data` function takes in the filenames of tokenized train and validation sets, batch
+    size, and prepares the data for training and validation by loading the tokenized data, converting
+    labels, creating tensors, and creating data loaders.
+    
+    :param train_set_tokens_filename: The `train_set_tokens_filename` parameter is the file name of the
+    pickle file that contains the tokenized training data. This file is typically generated in a
+    previous step of the data preparation process, such as tokenization
+    :type train_set_tokens_filename: str
+    :param valid_set_tokens_filename: The `valid_set_tokens_filename` parameter is the filename of a
+    pickle file that contains the tokenized validation set data. This file should have been created
+    using the `tokenization.ipynb` notebook
+    :type valid_set_tokens_filename: str
+    :param batch_size: The batch_size parameter determines the number of samples that will be processed
+    in each iteration during training. It specifies how many samples will be loaded into memory at once,
+    defaults to 128
+    :type batch_size: int (optional)
+    """
     def prepare_data(self,
                      train_set_tokens_filename: str, #pkl file of tokens as made in tokenization.ipynb
                      valid_set_tokens_filename: str, # pkl ...
@@ -119,7 +178,36 @@ class trainer:
               warmup: int = 3,
               use_focal_loss: bool = False):
         
-
+        """
+        The `train` function trains a model using the specified optimizer, learning rate, and other
+        parameters, and saves the training results and model checkpoints.
+        
+        :param model_name: The name of the model to be used for training. It should be a string that
+        represents the model architecture, such as "microsoft/deberta-base"
+        :param optimizer_name: The `optimizer_name` parameter is the name of the optimizer that will be
+        used for training the model. It should be an initialized optimizer object from the
+        `transformers.optimization` module
+        :param learning_rate: The learning rate is a hyperparameter that determines the step size at each
+        iteration while updating the model parameters during training. It controls how quickly or slowly
+        the model learns from the training data
+        :param epsilon: The `epsilon` parameter is used in the AdamW optimizer. It is a small value added
+        to the denominator to improve numerical stability when dividing by the square root of the second
+        moment of the gradients. It prevents division by zero
+        :param number_of_epochs: The parameter `number_of_epochs` specifies the number of times the
+        training loop will iterate over the entire dataset. Each iteration is called an epoch. By
+        default, it is set to 2, defaults to 2
+        :type number_of_epochs: int (optional)
+        :param warmup: The `warmup` parameter is used to specify the number of warmup steps during
+        training. Warmup steps are a period at the beginning of training where the learning rate is
+        gradually increased from a very small value to the desired learning rate. This helps the model to
+        stabilize and avoid large changes in the, defaults to 3
+        :type warmup: int (optional)
+        :param use_focal_loss: A boolean flag indicating whether to use focal loss or not. Focal loss is
+        a modification of the standard cross-entropy loss that focuses on hard examples during training.
+        It can be useful in imbalanced classification tasks where the majority class dominates the loss
+        function, defaults to False
+        :type use_focal_loss: bool (optional)
+        """
         #<<<<<<<<<<<<<   create model dict for this should use model_name >>>>>>>>>>>>>
         self.model = DebertaForSequenceClassification.from_pretrained("microsoft/deberta-base", num_labels = self.num_labels)
 
