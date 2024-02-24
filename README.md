@@ -23,7 +23,7 @@
 2. The pre-processed dataset is tokenized 
 using **rust** based batchwise tokenization and saved as pickle files. <a href="./tokenization.ipynb">[tokenization]</a>
 
-3. Each transformer is trained using its respective tokensized dataset, the metrics are logged, and then visualized as shown below. <a href="./Training.ipynb">[training]</a> : <br><br>
+3. Each transformer is trained using its respective tokensized dataset, the metrics are logged, and then visualized as shown below. <a href="./Training.ipynb">[training</a> : <br><br>
 
 
 <p align="center">
